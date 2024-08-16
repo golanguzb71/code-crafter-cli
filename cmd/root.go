@@ -8,7 +8,7 @@ import (
 
 var RootCmd = &cobra.Command{
 	Use:   "codeCrafter",
-	Short: "A simple CLI tool",
+	Short: "Tool for helping making project structure join my Telegram channel => https://t.me/kuyov_taraf",
 }
 
 func Execute() {

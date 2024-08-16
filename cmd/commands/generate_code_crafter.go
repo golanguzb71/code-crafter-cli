@@ -15,11 +15,10 @@ var generateCrafter = &cobra.Command{
 }
 
 func genCra(cmd *cobra.Command, args []string) {
-	if len(args) < 1 {
-		fmt.Println("Error: No directory specified")
-		return
+	dir, err := os.Getwd()
+	if err != nil {
+		fmt.Printf("Error getting current location %v", err)
 	}
-	dir := args[0]
 	filePath := filepath.Join(dir, "codeCrafter.yml")
 	file, err := os.Create(filePath)
 	if err != nil {
@@ -28,8 +27,8 @@ func genCra(cmd *cobra.Command, args []string) {
 	}
 	defer file.Close()
 
-	content := `# Define your packages and files like this and use powerful creating class features as like video
-event:
+	content := `
+event:   
   creating_package_files:
     state: on
     flow:
@@ -43,14 +42,14 @@ event:
       - repository
       - service/[MockService.java]
       - service/impl/[MockServiceImpl.java]
-  creating_class:
-    /entity| Entity.java
-    /controller| Controller.java
-    /mapper| Mapper.java
-    /payload| Payload.java
-    /repository| Repository.java
-    /service| Service.java
-    /service/impl| ServiceImpl.java
+  linking_class:
+    - entity| Entity.java
+    - controller| Controller.java
+    - mapper| Mapper.java
+    - payload| Payload.java
+    - repository| Repository.java
+    - service| Service.java
+    - service/impl| ServiceImpl.java
 `
 	_, err = file.WriteString(content)
 	if err != nil {

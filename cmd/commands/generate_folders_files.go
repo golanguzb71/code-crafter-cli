@@ -18,6 +18,7 @@ type Config struct {
 			State string   `yaml:"state"`
 			Path  []string `yaml:"flow"`
 		} `yaml:"creating_package_files"`
+		LinkingClass []string `yaml:"linking_class"`
 	} `yaml:"event"`
 }
 
@@ -28,10 +29,18 @@ var generateFoldersAndFiles = &cobra.Command{
 }
 
 func genFolderAndFiles(cmd *cobra.Command, args []string) {
-	data, err := ioutil.ReadFile("codeCrafter.yml")
+	projectDir, err := os.Getwd()
 	if err != nil {
-		fmt.Printf("Error reading YAML file: %v", err)
-		logger.ErrorLogger.Printf("Error reading YAML file %v", err)
+		fmt.Printf("Error getting current working directory: %v\n", err)
+		logger.ErrorLogger.Printf("Error getting current working directory: %v", err)
+		return
+	}
+
+	configPath := filepath.Join(projectDir, "codeCrafter.yml")
+	data, err := ioutil.ReadFile(configPath)
+	if err != nil {
+		fmt.Printf("Error reading YAML file: %v\n", err)
+		logger.ErrorLogger.Printf("Error reading YAML file: %v", err)
 		return
 	}
 	var config Config
