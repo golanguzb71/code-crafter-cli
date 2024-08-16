@@ -1,0 +1,22 @@
+event:
+  creating_package_files:
+    state: on
+    flow:
+      - config/[ApplicationConfig.java,DataLoaderConfig.java,OpenApiConfig.java]
+      - controller
+      - entity
+      - exception
+      - jwt/[JwtFilter.java,JwtProvider.java]
+      - mapper
+      - payload
+      - repository
+      - service/[MockService.java]
+      - service/impl/[MockServiceImpl.java]
+  linking_class:
+    - entity| Entity.java
+    - controller| Controller.java
+    - mapper| Mapper.java
+    - payload| Payload.java
+    - repository| Repository.java
+    - service| Service.java
+    - service/impl| ServiceImpl.java
