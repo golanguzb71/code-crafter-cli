@@ -19,12 +19,13 @@ The **CodeCrafter** CLI tool is designed to streamline the creation and manageme
 
 ### Download the Binary
 
-<pre><code>wget https://github.com/golanguzb71/codeCrafter/releases/download/v1.0.0/codeCrafter-linux-amd64 -O /usr/local/bin/codeCrafter
+<pre><code>wget https://github.com/golanguzb71/CODE_CRAFTER_CLI_TOOL/blob/java_part/codeCrafter 
+move to /usr/local/bin/codeCrafter
 chmod +x /usr/local/bin/codeCrafter</code></pre>
 
 ### Clone from GitHub
 
-<pre><code>git clone https://github.com/golanguzb71/codeCrafter.git
+<pre><code>https://github.com/golanguzb71/CODE_CRAFTER_CLI_TOOL
 cd codeCrafter</code></pre>
 
 <pre><code>make build</code></pre>
